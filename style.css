@@ -1,4 +1,7 @@
 :root {
+  --accent: #EE3B24;
+  --accent-dark: #B82B17;
+  --accent-50: #FCEAE6;
   --teal: #1AAE78;
   --teal-dark: #0F6E56;
   --teal-50: #E1F5EE;
@@ -69,7 +72,7 @@ body {
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal-dark);
+  color: var(--accent-dark);
   font-weight: 700;
 }
 
@@ -97,7 +100,7 @@ body {
 .topbar nav a:hover,
 .topbar nav a.active {
   color: var(--ink);
-  border-bottom-color: var(--teal);
+  border-bottom-color: var(--accent);
 }
 
 /* ===== Hero ===== */
@@ -113,7 +116,7 @@ body {
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--teal-dark);
+  color: var(--accent-dark);
   font-weight: 700;
   margin-bottom: 12px;
 }
@@ -139,8 +142,8 @@ body {
   right: 2px;
   bottom: 6px;
   height: 10px;
-  background: var(--teal);
-  opacity: 0.28;
+  background: var(--accent);
+  opacity: 0.22;
   z-index: -1;
   border-radius: 4px;
 }
@@ -150,6 +153,56 @@ body {
   color: var(--muted);
   max-width: 520px;
   margin: 0 auto;
+}
+
+/* ===== Filter chips ===== */
+
+.filters {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filters .divider {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+  margin: 0 6px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--sans);
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  padding: 40px 24px;
+  grid-column: 1 / -1;
 }
 
 /* ===== Card grid ===== */
@@ -276,7 +329,7 @@ body {
 
 .insta-link:hover {
   color: var(--ink);
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .card-meta {
@@ -295,7 +348,7 @@ body {
 
 .card-order .label {
   font-weight: 700;
-  color: var(--teal-dark);
+  color: var(--accent-dark);
 }
 
 .card-note {
