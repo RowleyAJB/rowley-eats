@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rowley Eats — Food recommendations from Rowley</title>
+  <meta name="description" content="Rowley's personal recommendations for places to eat across the Wirral and Liverpool, with notes on what to order.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Rowley signature logo">
+      <div class="brand-text">
+        <span class="brand-eyebrow">Food recommendations</span>
+        <span class="brand-title">Rowley Eats</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html" class="active">Spots</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Wirral &amp; Liverpool, and wherever else turns up good food</div>
+    <h1>The places worth turning <span class="underline">up for</span></h1>
+    <p class="lede">A running list of spots I'd happily send a mate to, plus exactly what to order when you get there.</p>
+  </section>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    Built by Rowley. Got a recommendation of your own? Send it over and it might end up on here.
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
