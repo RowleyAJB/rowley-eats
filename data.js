@@ -96,7 +96,7 @@ const SPOTS = [
     city: "Liverpool",
     area: "Baltic Market",
     cuisine: "American",
-    image: "",
+    image: "nashville-cluck.jpg",
     accent: "blue",
     instagram: "https://www.instagram.com/thenashvillecluck/",
     had: "The Original Nashville Cluck sandwich, mild if you want flavour without losing your tastebuds, hot if you don't",
