@@ -28,12 +28,15 @@ function isNew(dateAdded) {
 
 let activeCity = "all";
 let activeCuisine = "all";
+let activeTakeaway = false;
+let sortOrder = "newest"; // "newest" | "oldest"
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
 
 // --- Build filter chips dynamically from data ---
 function buildChips() {
+  // City chips
   const cities = [...new Set(SPOTS.map(s => s.city))].sort();
   cities.forEach(c => {
     const btn = document.createElement("button");
@@ -44,38 +47,81 @@ function buildChips() {
     filters.appendChild(btn);
   });
 
-  const divider = document.createElement("span");
-  divider.className = "divider";
-  filters.appendChild(divider);
+  // Divider
+  addDivider();
 
+  // Cuisine chips
   const cuisines = [...new Set(SPOTS.map(s => s.cuisine))].sort();
+  const allCuisineBtn = makeChip("All food", "cuisine", "all", true);
+  filters.appendChild(allCuisineBtn);
+  cuisines.forEach(c => filters.appendChild(makeChip(c, "cuisine", c)));
 
-  const allBtn = document.createElement("button");
-  allBtn.className = "chip active";
-  allBtn.dataset.filterType = "cuisine";
-  allBtn.dataset.value = "all";
-  allBtn.textContent = "All food types";
-  filters.appendChild(allBtn);
+  // Divider
+  addDivider();
 
-  cuisines.forEach(c => {
-    const btn = document.createElement("button");
-    btn.className = "chip";
-    btn.dataset.filterType = "cuisine";
-    btn.dataset.value = c;
-    btn.textContent = c;
-    filters.appendChild(btn);
+  // Takeaway chip
+  const takeawayBtn = document.createElement("button");
+  takeawayBtn.className = "chip";
+  takeawayBtn.id = "takeawayChip";
+  takeawayBtn.innerHTML = `<i class="fa-solid fa-bag-shopping" style="font-size:11px;"></i> Takeaway`;
+  takeawayBtn.addEventListener("click", () => {
+    activeTakeaway = !activeTakeaway;
+    takeawayBtn.classList.toggle("active", activeTakeaway);
+    render();
   });
+  filters.appendChild(takeawayBtn);
+
+  // Sort toggle pushed to the right
+  const sortBtn = document.createElement("button");
+  sortBtn.className = "chip-sort";
+  sortBtn.id = "sortBtn";
+  sortBtn.innerHTML = `<i class="fa-solid fa-arrow-down-wide-short"></i> Newest first`;
+  sortBtn.addEventListener("click", () => {
+    sortOrder = sortOrder === "newest" ? "oldest" : "newest";
+    sortBtn.innerHTML = `<i class="fa-solid fa-arrow-down-wide-short"></i> ${sortOrder === "newest" ? "Newest first" : "Oldest first"}`;
+    render();
+  });
+  filters.appendChild(sortBtn);
+}
+
+function makeChip(label, type, value, active = false) {
+  const btn = document.createElement("button");
+  btn.className = "chip" + (active ? " active" : "");
+  btn.dataset.filterType = type;
+  btn.dataset.value = value;
+  btn.textContent = label;
+  return btn;
+}
+
+function addDivider() {
+  const d = document.createElement("span");
+  d.className = "divider";
+  filters.appendChild(d);
+}
+
+// --- Filtering & sorting ---
+function getFiltered() {
+  let list = SPOTS.filter(s =>
+    (activeCity === "all" || s.city === activeCity) &&
+    (activeCuisine === "all" || s.cuisine === activeCuisine) &&
+    (!activeTakeaway || s.takeaway === true)
+  );
+
+  list = list.slice().sort((a, b) => {
+    const da = new Date(a.dateAdded || "2000-01-01");
+    const db = new Date(b.dateAdded || "2000-01-01");
+    return sortOrder === "newest" ? db - da : da - db;
+  });
+
+  return list;
 }
 
 // --- Render cards ---
 function render() {
-  const filtered = SPOTS.filter(s =>
-    (activeCity === "all" || s.city === activeCity) &&
-    (activeCuisine === "all" || s.cuisine === activeCuisine)
-  );
+  const filtered = getFiltered();
 
   if (!filtered.length) {
-    grid.innerHTML = `<p class="no-results">Nothing matches those filters yet, try a different combination.</p>`;
+    grid.innerHTML = `<p class="no-results">Nothing matches those filters, try a different combination.</p>`;
     return;
   }
 
@@ -99,7 +145,7 @@ function render() {
           </a>
         </div>
         <p class="card-meta">${spot.area}, ${spot.city} &middot; ${spot.cuisine}</p>
-        <p class="card-order"><span class="label">Order:</span> ${spot.order}</p>
+        <p class="card-had"><span class="label">I went for:</span> ${spot.had}</p>
         <p class="card-note">${spot.note}</p>
         <div class="card-tags">
           ${spot.tags.map(t => `<span class="tag">${t}</span>`).join("")}
@@ -110,9 +156,9 @@ function render() {
   `).join("");
 }
 
-// --- Chip click handling ---
+// --- City/cuisine chip click handling ---
 filters.addEventListener("click", e => {
-  const chip = e.target.closest(".chip");
+  const chip = e.target.closest(".chip[data-filter-type]");
   if (!chip) return;
 
   const type = chip.dataset.filterType;

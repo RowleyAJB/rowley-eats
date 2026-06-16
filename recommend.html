@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommend a place — Rowley Eats</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { overflow: auto; }
+
+    .recommend-page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .recommend-page h1 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .recommend-page p.intro {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 36px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink);
+      background: #fff;
+      transition: border-color 0.15s ease;
+      -webkit-appearance: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-dark);
+    }
+
+    .success-msg {
+      display: none;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      font-size: 15px;
+      color: var(--ink);
+      margin-top: 24px;
+    }
+
+    .success-msg strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Rowley Eats">
+    </div>
+    <nav>
+      <a href="index.html">Spots</a>
+      <a href="recommend.html" class="active">Recommend a place</a>
+    </nav>
+  </header>
+
+  <div class="recommend-page">
+    <h1>Got somewhere good?</h1>
+    <p class="intro">If you think a place deserves to be on here, let me know. I'll go and try it.</p>
+
+    <!--
+      ACTION SETUP:
+      1. Go to https://formspree.io and sign up for free
+      2. Create a new form, set the email to rowleyajb@gmail.com
+      3. Replace YOUR_FORMSPREE_ID below with the ID from your Formspree dashboard (e.g. xpwzgkna)
+    -->
+    <form id="recommendForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="place">Place name *</label>
+          <input type="text" id="place" name="place" placeholder="e.g. The Bakehouse" required>
+        </div>
+        <div class="form-group">
+          <label for="area">Area / city *</label>
+          <input type="text" id="area" name="area" placeholder="e.g. Birkenhead" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="what">What should I get?</label>
+        <input type="text" id="what" name="what_to_get" placeholder="e.g. The pastrami sandwich">
+      </div>
+
+      <div class="form-group">
+        <label for="why">Why do you rate it?</label>
+        <textarea id="why" name="why" placeholder="Tell me what makes it worth going to..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="instagram">Instagram handle (optional)</label>
+        <input type="text" id="instagram" name="instagram" placeholder="@placename">
+        <p class="hint">Helps me find them before I visit.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="your_name">Your name (optional)</label>
+        <input type="text" id="your_name" name="your_name" placeholder="So I know who to thank">
+      </div>
+
+      <button type="submit" class="submit-btn">Send recommendation</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <strong>Thanks, I'll check it out.</strong>
+      If it's good, it'll end up on the list.
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("recommendForm");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
+      if (res.ok) {
+        form.style.display = "none";
+        successMsg.style.display = "block";
+      } else {
+        alert("Something went wrong, try again or email me directly at rowleyajb@gmail.com");
+      }
+    });
+  </script>
+
+</body>
+</html>
