@@ -233,5 +233,21 @@ const SPOTS = [
     takeaway: true,
     tags: ["Bagels", "Coffee", "Dog friendly"],
     dateAdded: "2026-06-15"
+  },
+  {
+    id: "pastry-pedaleur",
+    name: "Pastry Pédaleur",
+    city: "Chester",
+    area: "Chester Market",
+    cuisine: "Bakery",
+    image: "images/pastry-pedaleur.jpg",
+    accent: "teal",
+    instagram: "https://www.instagram.com/pastrypedaleur/",
+    had: "The crème brûlée vanilla slice — possibly the best dessert I've ever eaten",
+    note: "French-inspired micro bakery inside Chester Market, run by pastry chef Stephanie Peters. The menu changes constantly so whatever's on the counter that day is worth trying. Winner of Cheshire Food Producer of the Year and featured on Channel 4.",
+    price: 1,
+    takeaway: true,
+    tags: ["Pastry", "French", "Market"],
+    dateAdded: "2026-06-15"
   }
 ];
