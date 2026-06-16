@@ -1,9 +1,13 @@
 // Rowley Eats — recommendation data
 //
 // To add a new spot: copy one of the objects below, fill in the details, and add it to the array.
+//
 // image: put a photo file in the /images folder and reference it here, e.g. "images/my-photo.jpg"
 //        if left blank, a coloured placeholder using an accent colour is shown instead.
-// accent: "teal", "blue", or "indigo" — controls the placeholder colour and price-tier colour
+// accent: "teal", "blue", or "indigo" — controls the placeholder colour
+// price: 1 = £, 2 = ££, 3 = £££
+// takeaway: true if this place does takeaway/delivery worth knowing about
+// dateAdded: "YYYY-MM-DD" — used to show a "New" badge for the first 30 days after adding
 
 const SPOTS = [
   {
@@ -18,7 +22,9 @@ const SPOTS = [
     order: "The American Cheeseburger, and don't skip the buffalo hot wings to start",
     note: "Sit in the secret garden if the weather's playing nice. Closed Mondays and Tuesdays, so don't turn up expecting it.",
     price: 2,
-    tags: ["Burgers", "Garden", "Good for groups"]
+    takeaway: false,
+    tags: ["Burgers", "Garden", "Good for groups"],
+    dateAdded: "2026-05-01"
   },
   {
     id: "rudys-castle-street",
@@ -32,7 +38,9 @@ const SPOTS = [
     order: "Calabrese, or the Margherita if you want to see what a proper Neapolitan base should taste like",
     note: "Dough is fermented for 24 hours and the oven runs seriously hot, so the crust has that leopard-spotted char. Go early evening to dodge the queue.",
     price: 2,
-    tags: ["Pizza", "Wood-fired", "Date night"]
+    takeaway: true,
+    tags: ["Pizza", "Wood-fired", "Date night"],
+    dateAdded: "2026-05-01"
   },
   {
     id: "hardware-liverpool",
@@ -46,7 +54,9 @@ const SPOTS = [
     order: "Steak and eggs with a side of smashed avocado, and a cortado to go with it",
     note: "Tucked into the old Rapid Hardware shopfront on Renshaw Street. Order via the QR code, menu's bigger than you'd expect.",
     price: 2,
-    tags: ["Brunch", "Coffee", "Weekend"]
+    takeaway: false,
+    tags: ["Brunch", "Coffee", "Weekend"],
+    dateAdded: "2026-05-01"
   },
   {
     id: "dough-and-doppio",
@@ -60,7 +70,9 @@ const SPOTS = [
     order: "Any of the focaccia sandwiches, the salami one with hot honey is a strong shout, plus a cannoli if they've got them",
     note: "Slow-proofed dough made fresh in house, went viral locally for good reason. Small spot, more of a grab-and-go than somewhere to sit.",
     price: 1,
-    tags: ["Sandwiches", "Coffee", "Quick bite"]
+    takeaway: true,
+    tags: ["Sandwiches", "Coffee", "Quick bite"],
+    dateAdded: "2026-05-01"
   },
   {
     id: "dope-crusts",
@@ -74,6 +86,120 @@ const SPOTS = [
     order: "Margherita or the goats cheese pizza, both come up consistently as favourites",
     note: "Proper Neapolitan pizza made by two people who clearly love what they do. Great value, also do pizza catering for events if you're planning a party.",
     price: 1,
-    tags: ["Pizza", "Takeaway", "Value"]
+    takeaway: true,
+    tags: ["Pizza", "Takeaway", "Value"],
+    dateAdded: "2026-05-01"
+  },
+  {
+    id: "nashville-cluck",
+    name: "The Nashville Cluck",
+    city: "Liverpool",
+    area: "Baltic Market",
+    cuisine: "American",
+    image: "",
+    accent: "blue",
+    instagram: "https://www.instagram.com/thenashvillecluck/",
+    order: "The Original Nashville Cluck sandwich, mild if you want flavour without losing your tastebuds, hot if you don't",
+    note: "Started as a delivery-only kitchen and got big enough to land a spot in Baltic Market. Buttermilk-brined chicken with sauces flown in from the US. There's also a takeaway-only branch on Townfield Close in Prenton if you're over that side of the water.",
+    price: 1,
+    takeaway: true,
+    tags: ["Fried chicken", "Market", "Spicy"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "pattersons",
+    name: "Pattersons",
+    city: "Liverpool",
+    area: "Ropewalks",
+    cuisine: "American",
+    image: "",
+    accent: "indigo",
+    instagram: "https://www.instagram.com/pattersonsarentwe/",
+    order: "The buttermilk fried chicken, brined for 24 hours, plus the loaded fries to share",
+    note: "Tucked down Gradwell Street, chicken and tunes is the whole vibe. Good for a casual one with mates, gets busy on weekends so book ahead. There's also a takeaway-only spot in Bebington if you just want the chicken without the night out.",
+    price: 2,
+    takeaway: true,
+    tags: ["Fried chicken", "Cocktails", "Good for groups"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "pina-loca-poco-loco",
+    name: "Piña Loca / Poco Loco",
+    city: "Wirral",
+    area: "Bromborough",
+    cuisine: "Mexican",
+    image: "",
+    accent: "teal",
+    instagram: "https://www.instagram.com/pinalocawirral/",
+    order: "Birria tacos if they're on, otherwise a loaded burrito and the corn ribs on the side",
+    note: "Piña Loca is the sit-down restaurant and cocktail bar, Poco Loco just across the road is the takeaway sibling if you'd rather eat at home.",
+    price: 2,
+    takeaway: true,
+    tags: ["Mexican", "Tacos", "Cocktails"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "claremont-farm",
+    name: "Claremont Farm",
+    city: "Wirral",
+    area: "Bebington",
+    cuisine: "Cafe",
+    image: "",
+    accent: "blue",
+    instagram: "https://www.instagram.com/claremontfarm/",
+    order: "Whatever the lunch special is on the board, plus a slice of homemade traybake to take away from the farm shop",
+    note: "Farm shop and cafe in one, locally sourced and always busy at weekends. Good for a daytime trip, especially if you've got the dog or kids with you.",
+    price: 2,
+    takeaway: false,
+    tags: ["Cafe", "Farm shop", "Daytime"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "fox-and-hounds",
+    name: "Fox & Hounds",
+    city: "Wirral",
+    area: "Heswall / Barnston",
+    cuisine: "Pub",
+    image: "",
+    accent: "indigo",
+    instagram: "https://www.facebook.com/foxandhoundsbarnston/",
+    order: "The Sunday roast if you can get a booking, otherwise the fish and chips is a safe bet",
+    note: "Proper old-school country pub with a real fire and a beer garden. Dog friendly, food only runs 12-2.30 so plan around it, and Sundays get busy so book ahead.",
+    price: 2,
+    takeaway: false,
+    tags: ["Pub", "Sunday roast", "Dog friendly"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "solo-bread",
+    name: "Solo Bread",
+    city: "Wirral",
+    area: "Rock Ferry, Bebington Road",
+    cuisine: "Bakery",
+    image: "",
+    accent: "teal",
+    instagram: "https://www.instagram.com/s0lobread/",
+    order: "A sourdough country loaf, plus a cardamom or cinnamon bun while it's still warm",
+    note: "Small artisan bakery doing long-fermented sourdough with stoneground UK flour. Best to pre-order for weekend collection since the good stuff goes fast.",
+    price: 1,
+    takeaway: true,
+    tags: ["Bakery", "Sourdough", "Pastries"],
+    dateAdded: "2026-06-15"
+  },
+  {
+    id: "the-bakehouse",
+    name: "The Bakehouse",
+    city: "Wirral",
+    area: "Birkenhead",
+    cuisine: "Bakery",
+    image: "",
+    accent: "blue",
+    instagram: "https://www.instagram.com/thebakehousewirral/",
+    order: "The pastrami sandwich if they've got it, otherwise pick whatever looks best from the cake counter",
+    note: "Started as a stall at farmers' markets and grew into three Wirral spots (Argyle Street and Claughton Road in Birkenhead, plus West Kirby). Great for sandwiches, cakes and a coffee on the go.",
+    price: 1,
+    takeaway: true,
+    tags: ["Bakery", "Sandwiches", "Coffee"],
+    dateAdded: "2026-06-15"
   }
 ];

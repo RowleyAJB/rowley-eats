@@ -1,17 +1,29 @@
 // Rowley Eats — app logic
 
 const PRICE_LABEL = { 1: "£", 2: "££", 3: "£££" };
+const NEW_BADGE_DAYS = 30;
 
 const CUISINE_ICON = {
   "American": "fa-burger",
   "Italian": "fa-pizza-slice",
   "Italian Deli": "fa-bread-slice",
   "Brunch": "fa-mug-saucer",
-  "Pub": "fa-beer-mug-empty"
+  "Pub": "fa-beer-mug-empty",
+  "Mexican": "fa-pepper-hot",
+  "Cafe": "fa-mug-saucer",
+  "Bakery": "fa-bread-slice"
 };
 
 function iconFor(cuisine) {
   return CUISINE_ICON[cuisine] || "fa-utensils";
+}
+
+function isNew(dateAdded) {
+  if (!dateAdded) return false;
+  const added = new Date(dateAdded);
+  const now = new Date();
+  const diffDays = (now - added) / (1000 * 60 * 60 * 24);
+  return diffDays >= 0 && diffDays <= NEW_BADGE_DAYS;
 }
 
 let activeCity = "all";
@@ -77,6 +89,7 @@ function render() {
              </div>`
         }
         <span class="price-badge">${PRICE_LABEL[spot.price]}</span>
+        ${isNew(spot.dateAdded) ? `<span class="new-badge">New</span>` : ""}
       </div>
       <div class="card-body">
         <div class="card-top">
@@ -90,6 +103,7 @@ function render() {
         <p class="card-note">${spot.note}</p>
         <div class="card-tags">
           ${spot.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+          ${spot.takeaway ? `<span class="tag tag-takeaway"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Takeaway</span>` : ""}
         </div>
       </div>
     </article>
