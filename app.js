@@ -145,7 +145,7 @@ function render() {
           </a>
         </div>
         <p class="card-meta">${spot.area}, ${spot.city} &middot; ${spot.cuisine}</p>
-        <p class="card-had"><span class="label">I went for:</span> ${spot.had}</p>
+        <p class="card-had"><span class="label">My go-to:</span> ${spot.had}</p>
         <p class="card-note">${spot.note}</p>
         <div class="card-tags">
           ${spot.tags.map(t => `<span class="tag">${t}</span>`).join("")}

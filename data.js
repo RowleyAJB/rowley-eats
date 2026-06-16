@@ -201,5 +201,21 @@ const SPOTS = [
     takeaway: true,
     tags: ["Bakery", "Sandwiches", "Coffee"],
     dateAdded: "2026-06-15"
+  },
+  {
+    id: "griffiths-bakery",
+    name: "Griffiths Bakery",
+    city: "Wirral",
+    area: "New Ferry",
+    cuisine: "Bakery",
+    image: "",
+    accent: "teal",
+    instagram: "https://www.facebook.com/p/Griffiths-Bakery-61575173590598/",
+    had: "The chicken and ham pie",
+    note: "A proper old-school bakery on Bebington Road. The pies are the reason to go.",
+    price: 1,
+    takeaway: true,
+    tags: ["Bakery", "Pies", "Local favourite"],
+    dateAdded: "2026-06-15"
   }
 ];
