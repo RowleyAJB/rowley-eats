@@ -217,5 +217,21 @@ const SPOTS = [
     takeaway: true,
     tags: ["Bakery", "Pies", "Local favourite"],
     dateAdded: "2026-06-15"
+  },
+  {
+    id: "the-bagelry",
+    name: "The Bagelry",
+    city: "Liverpool",
+    area: "Chinatown, Nelson Street",
+    cuisine: "Cafe",
+    image: "images/the-bagelry.jpg",
+    accent: "indigo",
+    instagram: "https://www.instagram.com/bagelrypool/",
+    had: "Pastrami bagel and the tater tots on the side",
+    note: "Hand-rolled, boiled and baked bagels in a basement spot on Nelson Street with proper New York vibes. Two locations, Nelson Street is the flagship, Mossley Hill is the smaller bake shop. Dog friendly, open every day.",
+    price: 1,
+    takeaway: true,
+    tags: ["Bagels", "Coffee", "Dog friendly"],
+    dateAdded: "2026-06-15"
   }
 ];
