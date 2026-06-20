@@ -251,6 +251,38 @@ const SPOTS = [
     dateAdded: "2026-06-15"
   },
   {
+    id: "rough-handmade",
+    name: "Rough Handmade",
+    city: "Liverpool",
+    area: "Albert Dock",
+    cuisine: "Bakery",
+    image: "images/rough-handmade.jpg",
+    accent: "indigo",
+    instagram: "https://www.instagram.com/roughhandmade/",
+    had: "The croissants are the reason to go — the dulce de leche one if they've got it, but honestly you get what's left and it's all good",
+    note: "Boutique bakery at the Albert Dock, open from 7.30am weekdays and 8.30am weekends. Get there early if you want first pick, the good stuff goes fast.",
+    price: 1,
+    takeaway: true,
+    tags: ["Bakery", "Croissants", "Albert Dock"],
+    dateAdded: "2026-06-20"
+  },
+  {
+    id: "francies-focaccia",
+    name: "Francie's Focaccia & Coffee",
+    city: "Liverpool",
+    area: "Albert Dock",
+    cuisine: "Italian Deli",
+    image: "images/francies-focaccia.jpg",
+    accent: "teal",
+    instagram: "https://www.instagram.com/franciesfocaccia/",
+    had: "Whatever focaccia sandwich takes your eye on the day — the fillings are all good and the bread is baked fresh every morning",
+    note: "Family-run spot on the Albert Dock Colonnades, named after the siblings' Genoese grandad. Fillings and Italian deli ingredients imported directly from Italy. Great spot to sit outside when the weather's decent.",
+    price: 2,
+    takeaway: true,
+    tags: ["Focaccia", "Italian", "Albert Dock"],
+    dateAdded: "2026-06-20"
+  },
+  {
     id: "pastille",
     name: "Pastille Bakery",
     city: "Liverpool",
