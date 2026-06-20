@@ -249,5 +249,21 @@ const SPOTS = [
     takeaway: true,
     tags: ["Pastry", "French", "Market"],
     dateAdded: "2026-06-15"
+  },
+  {
+    id: "pastille",
+    name: "Pastille Bakery",
+    city: "Liverpool",
+    area: "Gibraltar Row",
+    cuisine: "Bakery",
+    image: "images/pastille.jpg",
+    accent: "blue",
+    instagram: "https://www.instagram.com/pastille_bakery/",
+    had: "Everything is good — the pastries are the obvious reason to go but the sandwiches are surprisingly strong too",
+    note: "Gone viral for good reason. Run by Jamie Heffy out of a small spot on Gibraltar Row near the Docks. Wed-Sun only, 9.30am-3.30pm, and they sell out most days so get there early.",
+    price: 1,
+    takeaway: true,
+    tags: ["Pastry", "Sandwiches", "Coffee"],
+    dateAdded: "2026-06-15"
   }
 ];
